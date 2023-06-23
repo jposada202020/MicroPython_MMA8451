@@ -34,11 +34,11 @@ Example showing the Data rate setting
     :caption: examples/mma8451_data_rate.py
     :lines: 5-
 
-Data rate settings
--------------------
+High pass filter cutoff settings
+---------------------------------
 
-Example showing the Data rate setting
+Example showing the High pass filter cutoff setting
 
-.. literalinclude:: ../examples/mma8451_data_rate.py
-    :caption: examples/mma8451_data_rate.py
+.. literalinclude:: ../examples/mma8451_high_pass_filter_cutoff.py
+    :caption: examples/mma8451_high_pass_filter_cutoff.py
     :lines: 5-

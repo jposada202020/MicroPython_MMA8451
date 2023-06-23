@@ -30,6 +30,7 @@ _REG_WHOAMI = const(0x0D)
 _DATA = const(0x01)
 _XYZ_DATA_CFG = const(0x0E)
 _CTRL_REG1 = const(0x2A)
+_HP_FILTER_CUTOFF = const(0x2F)
 
 _GRAVITY = 9.80665
 
@@ -62,6 +63,16 @@ data_rate_values = (
     DATARATE_6_25HZ,
     DATARATE_1_56HZ,
 )
+
+HPF_DISABLED = const(0b0)
+HPF_ENABLED = const(0b1)
+high_pass_filter_values = (HPF_DISABLED, HPF_ENABLED)
+
+CUTOFF_16HZ = const(0b00)
+CUTOFF_8HZ = const(0b01)
+CUTOFF_4HZ = const(0b10)
+CUTOFF_2HZ = const(0b11)
+high_pass_filter_cutoff_values = (CUTOFF_16HZ, CUTOFF_8HZ, CUTOFF_4HZ, CUTOFF_2HZ)
 
 
 class MMA8451:
@@ -100,6 +111,9 @@ class MMA8451:
     _operation_mode = CBits(1, _CTRL_REG1, 0)
     _scale_range = CBits(2, _XYZ_DATA_CFG, 0)
     _data_rate = CBits(2, _CTRL_REG1, 4)
+
+    _high_pass_filter = CBits(1, _XYZ_DATA_CFG, 4)
+    _high_pass_filter_cutoff = CBits(2, _HP_FILTER_CUTOFF, 0)
 
     def __init__(self, i2c, address: int = 0x1D) -> None:
         self._i2c = i2c
@@ -218,4 +232,59 @@ class MMA8451:
             raise ValueError("Value must be a valid data_rate setting")
         self._operation_mode = STANDBY_MODE
         self._data_rate = value
+        self._operation_mode = ACTIVE_MODE
+
+    @property
+    def high_pass_filter(self) -> str:
+        """
+        Sensor high_pass_filter
+
+        +----------------------------------+-----------------+
+        | Mode                             | Value           |
+        +==================================+=================+
+        | :py:const:`mma8451.HPF_DISABLED` | :py:const:`0b0` |
+        +----------------------------------+-----------------+
+        | :py:const:`mma8451.HPF_ENABLED`  | :py:const:`0b1` |
+        +----------------------------------+-----------------+
+        """
+        values = ("HPF_DISABLED", "HPF_ENABLED")
+        return values[self._high_pass_filter]
+
+    @high_pass_filter.setter
+    def high_pass_filter(self, value: int) -> None:
+        if value not in high_pass_filter_values:
+            raise ValueError("Value must be a valid high_pass_filter setting")
+        self._operation_mode = STANDBY_MODE
+        self._high_pass_filter = value
+        self._operation_mode = ACTIVE_MODE
+
+    @property
+    def high_pass_filter_cutoff(self) -> str:
+        """
+        Sensor high_pass_filter_cutoff sets the high-pass filter cutoff
+        frequency for removal of the offset and slower changing
+        acceleration data. In order to filter the acceleration data
+        :attr:`high_pass_filter` must be enabled.
+
+        +---------------------------------+------------------+
+        | Mode                            | Value            |
+        +=================================+==================+
+        | :py:const:`mma8451.CUTOFF_16HZ` | :py:const:`0b00` |
+        +---------------------------------+------------------+
+        | :py:const:`mma8451.CUTOFF_8HZ`  | :py:const:`0b01` |
+        +---------------------------------+------------------+
+        | :py:const:`mma8451.CUTOFF_4HZ`  | :py:const:`0b10` |
+        +---------------------------------+------------------+
+        | :py:const:`mma8451.CUTOFF_2HZ`  | :py:const:`0b11` |
+        +---------------------------------+------------------+
+        """
+        values = ("CUTOFF_16HZ", "CUTOFF_8HZ", "CUTOFF_4HZ", "CUTOFF_2HZ")
+        return values[self._high_pass_filter_cutoff]
+
+    @high_pass_filter_cutoff.setter
+    def high_pass_filter_cutoff(self, value: int) -> None:
+        if value not in high_pass_filter_cutoff_values:
+            raise ValueError("Value must be a valid high_pass_filter_cutoff setting")
+        self._operation_mode = STANDBY_MODE
+        self._high_pass_filter_cutoff = value
         self._operation_mode = ACTIVE_MODE
