@@ -34,7 +34,6 @@ _HP_FILTER_CUTOFF = const(0x2F)
 
 _GRAVITY = 9.80665
 
-
 STANDBY_MODE = const(0b0)
 ACTIVE_MODE = const(0b1)
 operation_mode_values = (STANDBY_MODE, ACTIVE_MODE)
