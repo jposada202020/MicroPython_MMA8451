@@ -113,8 +113,8 @@ class MMA8451:
 
     @property
     def acceleration(self) -> Tuple[float, float, float]:
-        """Get the acceleration measured by the sensor.  Will return a 3-tuple
-        of X, Y, Z axis acceleration values in :math:`m/s^2`.
+        """
+        Acceleration measured by the sensor in :math:`m/s^2`.
         """
 
         x, y, z = self._raw_data
