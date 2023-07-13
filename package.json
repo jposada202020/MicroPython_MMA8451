@@ -4,5 +4,5 @@
     ["micropython_mma8451/i2c_helpers.py", "github:jposada202020/MicroPython_MMA8451/micropython_mma8451/i2c_helpers.py"],
     ["micropython_mma8451/mma8451.py", "github:jposada202020/MicroPython_MMA8451/micropython_mma8451/mma8451.py"]
   ],
-  "version": "0.1"
+  "version": "1"
 }
