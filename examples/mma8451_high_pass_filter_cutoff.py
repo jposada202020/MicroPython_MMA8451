@@ -17,7 +17,9 @@ while True:
         print("Current High pass filter cutoff setting: ", mma.high_pass_filter_cutoff)
         for _ in range(10):
             accx, accy, accz = mma.acceleration
-            print("x:{:.2f}m/s2, y:{:.2f}m/s2, z:{:.2f}m/s2".format(accx, accy, accz))
+            print(
+                f"Acceleration: X={accx:0.1f}m/s^2 y={accy:0.1f}m/s^2 z={accz:0.1f}m/s^2"
+            )
             print()
             time.sleep(0.5)
         mma.high_pass_filter_cutoff = high_pass_filter_cutoff

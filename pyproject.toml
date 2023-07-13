@@ -21,8 +21,6 @@ urls = {Homepage = "https://github.com/jposada202020/MicroPython_MMA8451"}
 keywords = [
     "sensor",
     "micropython",
-    "mma8451",
-    "micropython",
     "driver",
     "sensor",
     "mma8451",

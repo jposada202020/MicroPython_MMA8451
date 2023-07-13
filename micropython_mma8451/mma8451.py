@@ -103,6 +103,8 @@ class MMA8451:
 
     .. code-block:: python
 
+        accx, accy, accz = mma8451.acceleration
+
     """
 
     _device_id = RegisterStruct(_REG_WHOAMI, "B")

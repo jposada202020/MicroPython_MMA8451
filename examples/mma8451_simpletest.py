@@ -11,8 +11,6 @@ mma = mma8451.MMA8451(i2c)
 
 while True:
     x, y, z = mma.acceleration
-    print(
-        "Acceleration: X={0:0.1f}m/s^2 y={1:0.1f}m/s^2 z={2:0.1f}m/s^2".format(x, y, z)
-    )
+    print(f"Acceleration: X={x:0.1f}m/s^2 y={y:0.1f}m/s^2 z={z:0.1f}m/s^2")
     print()
     time.sleep(0.5)
