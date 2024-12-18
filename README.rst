@@ -1,27 +1,11 @@
-Introduction
-============
+⛔️ DEPRECATED
+===============
 
+This repository is no longer supported, please consider using alternatives.
 
-.. image:: https://readthedocs.org/projects/micropython-mma8451/badge/?version=latest
-    :target: https://micropython-mma8451.readthedocs.io/en/latest/
-    :alt: Documentation Status
-
-
-.. image:: https://img.shields.io/badge/micropython-Ok-purple.svg
-    :target: https://micropython.org
-    :alt: micropython
-
-.. image:: https://img.shields.io/pypi/v/micropython-mma8451.svg
-    :alt: latest version on PyPI
-    :target: https://pypi.python.org/pypi/micropython-mma8451
-
-.. image:: https://static.pepy.tech/personalized-badge/micropython-mma8451?period=total&units=international_system&left_color=grey&right_color=blue&left_text=Pypi%20Downloads
-    :alt: Total PyPI downloads
-    :target: https://pepy.tech/project/micropython-mma8451
-
-.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-    :target: https://github.com/psf/black
-    :alt: Code Style: Black
+.. image:: http://unmaintained.tech/badge.svg
+  :target: http://unmaintained.tech
+  :alt: No Maintenance Intended
 
 MicroPython module for the MMA8451 3 axis accelerometer
 
